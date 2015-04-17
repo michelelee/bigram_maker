@@ -1,4 +1,5 @@
 # import sys
+from random import choice
 
 
 def make_chains(input_text):
@@ -25,10 +26,39 @@ def make_chains(input_text):
     return bigram_dict
 
     
-# def make_text(chains):
-#     """Takes dictionary of markov chains; returns random text."""
+def make_text(chains):
+    """Takes dictionary of markov chains; returns random text."""
+    # chains is the dictionary
+    # we have bigram_dict, its in chain
+    # now lets make a string...
+    # string of random... key 1 + random.choice(value_list) + key 2 + random.choice...
+    
 
-#     return "Here's some random text."
+    # How long do we go? until we cannot find the key!
+    words = []
+    random_key = choice(chains.keys())
+    words.append(random_key[0])
+    words.append(random_key[1])
+
+    # random text now equals "would you"
+    # can we find...value like bigrams_dictionary['would you'] = [list of words]
+
+    while random_key in chains:
+        # # key is a tuple
+        next_word = choice(chains[random_key])
+
+        words.append(next_word)
+        # first key should added to the string when it is used the first time... or selected 
+        # then the 3 words... will continually be joined 
+        # this will print the key every time it loops over, we only need it the first time. 
+
+        # new random_key
+        random_key = (random_key[1], next_word)
+
+    words_string = " ".join(words)
+    
+    print words_string
+
 
 
 # Change this to read input_text from a file, deciding which file should
@@ -37,16 +67,17 @@ def make_chains(input_text):
 
 #######################################################
 # input_text = "Some text"
-
+x = open('gettsburg.txt')
 # # Get a Markov chain
-# chain_dict = make_chains(input_text)
+chain_dict = make_chains(x)
+# hain_dict = bigram_dict
 
-# # Produce random text
-# random_text = make_text(chain_dict)
+# Produce random text
+random_text = make_text(chain_dict)
 
-# print random_text
+print random_text
 
-x = open('green-eggs.txt')
+
 
 # make_chains(x)
 
