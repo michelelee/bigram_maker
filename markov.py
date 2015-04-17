@@ -1,4 +1,4 @@
-# import sys
+import sys
 from random import choice
 
 
@@ -67,9 +67,9 @@ def make_text(chains):
 
 #######################################################
 # input_text = "Some text"
-x = open('gettsburg.txt')
+flower = open(sys.argv[1])
 # # Get a Markov chain
-chain_dict = make_chains(x)
+chain_dict = make_chains(flower)
 # hain_dict = bigram_dict
 
 # Produce random text
