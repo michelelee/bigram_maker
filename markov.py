@@ -78,7 +78,6 @@ random_text = make_text(chain_dict)
 print random_text
 
 
-
 # make_chains(x)
 
 # input_text= """Hello this is natalie and mish.
